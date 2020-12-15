@@ -1,6 +1,7 @@
 from os import environ
 import aiohttp
 from pyrogram import Client, filters
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 
 API_ID = environ.get('API_ID')
 API_HASH = environ.get('API_HASH')
