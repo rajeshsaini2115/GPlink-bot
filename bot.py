@@ -18,16 +18,37 @@ bot = Client('gplink bot',
 @bot.on_message(filters.command('start') & filters.private)
 async def start(bot, message):
     await message.reply(
-        f"**Hi {message.chat.first_name}!**\n\n"
-        "I'm GPlink bot. Just send me link and get short link")
-
+        f"**Hi {message.chat.first_name}!**\n\nHi {message.chat.first_name}!** \n\nThis is **GPLinks URL Shorter Bot**. Just send me any big link and get short link.",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton('Bots Updates Channel', url='https://t.me/Discovery_Updates')
+                ],
+                [
+                    InlineKeyboardButton('Support Group', url='https://t.me/linux_repo')
+                ]
+            ]
+        )
+    )
+    
+    
 
 @bot.on_message(filters.regex(r'https?://[^\s]+') & filters.private)
 async def link_handler(bot, message):
     link = message.matches[0].group(0)
     try:
         short_link = await get_shortlink(link)
-        await message.reply(f'Here is your [short link]({short_link})', quote=True)
+        await message.reply(
+            text=f"Here is your short link: {short_link}",
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton('Open Link', url=short_link)
+                    ]
+                ]
+            ),
+            quote=True
+        )
     except Exception as e:
         await message.reply(f'Error: {e}', quote=True)
 
