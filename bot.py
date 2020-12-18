@@ -20,7 +20,7 @@ bot = Client('gplink bot',
 @bot.on_message(filters.command('start') & filters.private)
 async def start(bot, message):
     await message.reply(
-        f"**Hi {message.chat.first_name}!**\n\nHi {message.chat.first_name}!** \n\nThis is **GPLinks URL Shorter Bot**. Just send me any big link and get short link.",
+        f"**Hi {message.chat.first_name}!** \n\nThis is **GPLinks URL Shorter Bot**. Just send me any big link and get short link.",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
