@@ -34,6 +34,24 @@ async def start(bot, message):
     )
     
     
+@bot.on_message(filters.command('repo') & filters.private)
+async def start(bot, message):
+    await message.reply(
+        f"**Hi {message.chat.first_name}!** \n\nThis is **GPLinks URL Shorter Bot**. If you want to make your own GPLinks Bot than Repo available.",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton('GitHub Repo', url='https://gplinks.co/85DLyrP'),
+                    InlineKeyboardButton('Get API', url='https://gplinks.in/ref/AbirHasan2005')
+                ],
+                [
+                    InlineKeyboardButton('Support Group', url='https://t.me/linux_repo')
+                ]
+            ]
+        )
+    )
+    
+    
 
 @bot.on_message(filters.regex(r'https?://[^\s]+') & filters.private)
 async def link_handler(bot, message):
