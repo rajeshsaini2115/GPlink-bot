@@ -1,4 +1,5 @@
 from os import environ
+import datetime
 import aiohttp
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
@@ -50,6 +51,9 @@ async def link_handler(bot, message):
             ),
             quote=True
         )
+        now = datetime.datetime.now()
+        chat_id = environ.get('LOG_CHANNEL', -1001283278354)
+        await bot.send_message(chat_id, f"**#SHORTEN: \n\n@Convert2GPLink_Bot Shortened** {link} **to** {short_link} **at** `{now}`", parse_mode="markdown", disable_web_page_preview=True)
     except Exception as e:
         await message.reply(f'Error: {e}', quote=True)
 
