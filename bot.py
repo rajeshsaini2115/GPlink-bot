@@ -35,7 +35,7 @@ async def start(bot, message):
     
     
 @bot.on_message(filters.command('repo') & filters.private)
-async def start(bot, message):
+async def repo(bot, message):
     await message.reply(
         f"**Hi {message.chat.first_name}!** \n\nThis is **GPLinks URL Shorter Bot**. If you want to make your own GPLinks Bot than Repo available.",
         reply_markup=InlineKeyboardMarkup(
