@@ -53,7 +53,8 @@ async def link_handler(bot, message):
         )
         now = datetime.datetime.now()
         chat_id = environ.get('LOG_CHANNEL', -1001283278354)
-        await bot.send_message(chat_id, f"**#SHORTEN: \n\n@Convert2GPLink_Bot Shortened** {link} **to** {short_link} **at** `{now}`", parse_mode="markdown", disable_web_page_preview=True)
+        uname = f"[{message.from_user.first_name}](tg://openmessage?user_id={message.from_user.id})"
+        await bot.send_message(chat_id, f"**#SHORTEN: \n\n@Convert2GPLink_Bot Shortened** {link} **to** {short_link} **for** {uname} **at** `{now}`", parse_mode="markdown", disable_web_page_preview=True)
     except Exception as e:
         await message.reply(f'Error: {e}', quote=True)
 
