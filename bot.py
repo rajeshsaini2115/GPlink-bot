@@ -7,7 +7,7 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 API_ID = environ.get('API_ID')
 API_HASH = environ.get('API_HASH')
 BOT_TOKEN = environ.get('BOT_TOKEN')
-API_KEY = 'afe5639a4c191dda12359ed9ebf8b87929a5f428'
+API_KEY = 'e79d26ac675025e1bfd29c5e93415f33d95b007b'
 
 bot = Client('gplink bot',
              api_id=API_ID,
@@ -24,10 +24,10 @@ async def start(bot, message):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton('Bots Updates Channel', url='https://t.me/Discovery_Updates')
+                    InlineKeyboardButton('Movie Channel', url='https://t.me/mrkpmovies')
                 ],
                 [
-                    InlineKeyboardButton('Support Group', url='https://t.me/linux_repo')
+                    InlineKeyboardButton('Movie Request Group', url='https://t.me/mrkprequest')
                 ]
             ]
         )
@@ -37,15 +37,15 @@ async def start(bot, message):
 @bot.on_message(filters.command('repo') & filters.private)
 async def repo(bot, message):
     await message.reply(
-        f"**Hi {message.chat.first_name}!** \n\nThis is **GPLinks URL Shorter Bot**. If you want to make your own GPLinks Bot than Repo available.",
+        f"**Hi {message.chat.first_name}!** \n\nThis is **GPLinks URL Shorter Bot**. If you want to make your own GPLinks Bot than Contact Owner.",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton('GitHub Repo', url='https://gplinks.co/85DLyrP'),
-                    InlineKeyboardButton('Get API', url='https://gplinks.in/ref/AbirHasan2005')
+                    InlineKeyboardButton('Owner', url='https://t.me/rajeshsaini2115'),
+                    InlineKeyboardButton('Get API', url='https://gplinks.in/ref/yostartech')
                 ],
                 [
-                    InlineKeyboardButton('Support Group', url='https://t.me/linux_repo')
+                    InlineKeyboardButton('Movie Request Group', url='https://t.me/mrkprequest')
                 ]
             ]
         )
@@ -70,9 +70,9 @@ async def link_handler(bot, message):
             quote=True
         )
         now = datetime.datetime.now()
-        chat_id = environ.get('LOG_CHANNEL', -1001283278354)
+        chat_id = environ.get('LOG_CHANNEL', -1001302061161)
         uname = f"[{message.from_user.first_name}](tg://openmessage?user_id={message.from_user.id})"
-        await bot.send_message(chat_id, f"**#SHORTEN: \n\n@GPLinkz_Bot Shortened** {link} **to** {short_link} **for** {uname} **at** `{now}`", parse_mode="markdown", disable_web_page_preview=True)
+        await bot.send_message(chat_id, f"**#SHORTEN: \n\n@mrkpgplinkbot Shortened** {link} **to** {short_link} **for** {uname} **at** `{now}`", parse_mode="markdown", disable_web_page_preview=True)
     except Exception as e:
         await message.reply(f'Error: {e}', quote=True)
 
